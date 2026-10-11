@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Youssef Sarraf</title>
+<meta name="description" content="Youssef Sarraf, étudiant en Master d'Excellence en IA (FSBM Casablanca). Data Science, Machine Learning et MLOps. Disponible pour un stage PFE dès février 2027.">
+<meta property="og:title" content="Youssef Sarraf · Data Science & Machine Learning">
+<meta property="og:description" content="Projets en vision, MLOps et data engineering. Disponible pour un stage PFE dès février 2027.">
+<meta property="og:image" content="photo.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314162b'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' fill='%23fff' text-anchor='middle'%3Eys%3C/text%3E%3C/svg%3E">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one editorial column (max 1120px). Hero = text | interactive 3D "latent space" of the projects.
+   Colour: dark-first, cluster hues sampled from the viridis colormap. */
+:root{
+  --bg:#0b0c16; --surface:#12142a; --surface-2:#181b35; --line:#262a47; --fg:#ecedf6; --muted:#9a9eba;
+  --accent:#3cc8b4; --accent-ink:#04201c; --hi:#fde725;
+  --c1:#fde725; --c2:#8fd744; --c3:#35b779; --c4:#25b3aa; --c5:#5b9be0; --c6:#a184f0; --c0:#4d5280;
+  --scene:dark;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --t-xs:.75rem; --t-sm:.875rem; --t-base:1.03rem; --t-md:1.2rem; --t-lg:1.6rem;
+  --t-xl:clamp(2.1rem,4.6vw,3.3rem); --t-hero:clamp(3.2rem,9.5vw,7.4rem);
+  --radius:14px; --maxw:1120px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f3f4f9; --surface:#ffffff; --surface-2:#eceef7; --line:#d8dbea; --fg:#14162b; --muted:#555a78;
+    --accent:#0f7d70; --accent-ink:#ffffff; --hi:#7d6400;
+    --c1:#a88a00; --c2:#4c951a; --c3:#1d8650; --c4:#127c77; --c5:#2c62a8; --c6:#6a46c4; --c0:#a3a8c6;
+    --scene:light; color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f3f4f9; --surface:#ffffff; --surface-2:#eceef7; --line:#d8dbea; --fg:#14162b; --muted:#555a78;
+  --accent:#0f7d70; --accent-ink:#ffffff; --hi:#7d6400;
+  --c1:#a88a00; --c2:#4c951a; --c3:#1d8650; --c4:#127c77; --c5:#2c62a8; --c6:#6a46c4; --c0:#a3a8c6;
+  --scene:light; color-scheme:light;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:var(--t-base);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none;background:var(--c, var(--accent))}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:color-mix(in srgb, var(--bg) 78%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid color-mix(in srgb, var(--line) 70%, transparent)}
+.nav .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
+.mark{font-family:var(--f-display);font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.mark i{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:.7rem;
+  background:var(--fg);color:var(--bg);font-family:var(--f-mono);font-weight:500}
+.nav ul{list-style:none;display:flex;gap:4px;margin:0 0 0 auto;padding:0}
+.nav ul a{text-decoration:none;font-size:var(--t-sm);color:var(--muted);padding:6px 10px;border-radius:8px}
+.nav ul a:hover{color:var(--fg);background:var(--surface-2)}
+.theme-btn{border:1px solid var(--line);background:var(--surface);color:var(--fg);width:36px;height:36px;border-radius:10px;
+  display:grid;place-items:center;cursor:pointer;flex:none}
+.theme-btn svg{width:17px;height:17px}
+@media (max-width:640px){.nav ul{display:none}.theme-btn{margin-left:auto}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-block:clamp(28px,6vw,64px) 24px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(16px,3vw,40px);align-items:center}
+.hero-text{display:flex;flex-direction:column;gap:22px;min-width:0;position:relative;z-index:2}
+.hero h1{font-size:var(--t-hero);font-weight:800;letter-spacing:-.045em;line-height:.9;font-variation-settings:"opsz" 96}
+.hero h1 span{display:block}
+.hero h1 .ghost{color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+.lede{font-size:var(--t-md);color:var(--muted);max-width:34ch;line-height:1.5}
+.lede strong{color:var(--fg);font-weight:600}
+.status{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-family:var(--f-mono);font-size:var(--t-sm);
+  padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.status .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent);
+  animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion: reduce){.status .pulse{animation:none}}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:var(--t-sm);
+  padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;font-family:var(--f-body)}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn svg{width:16px;height:16px}
+
+.latent{position:relative;height:clamp(380px,46vw,560px);min-width:0;border-radius:20px;overflow:hidden;
+  background:radial-gradient(60% 60% at 55% 45%, color-mix(in srgb,var(--c4) 10%,transparent), transparent 70%)}
+.latent canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.latent canvas:active{cursor:grabbing}
+.labels{position:absolute;inset:0;pointer-events:none}
+.lbl{position:absolute;left:0;top:0;pointer-events:auto;display:flex;align-items:center;gap:6px;white-space:nowrap;
+  font-family:var(--f-mono);font-size:11px;line-height:1;padding:6px 9px 6px 7px;border-radius:999px;cursor:pointer;
+  background:color-mix(in srgb,var(--bg) 72%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);color:var(--fg);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:border-color .2s, background .2s;will-change:transform}
+.lbl:hover,.lbl:focus-visible{border-color:var(--c);background:color-mix(in srgb,var(--c) 18%,var(--bg))}
+.lbl b{font-weight:500;color:var(--muted)}
+.latent-cap{position:absolute;left:14px;bottom:12px;right:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-family:var(--f-mono);font-size:11px;color:var(--muted);pointer-events:none}
+.latent.fallback canvas,.latent.fallback .labels{display:none}
+.latent.fallback{background:radial-gradient(30% 30% at 30% 40%, color-mix(in srgb,var(--c1) 30%,transparent),transparent),
+  radial-gradient(25% 25% at 70% 35%, color-mix(in srgb,var(--c5) 35%,transparent),transparent),
+  radial-gradient(28% 28% at 55% 70%, color-mix(in srgb,var(--c3) 30%,transparent),transparent)}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .latent{height:360px}
+  .lbl b{display:none}
+}
+
+/* ---------- metrics ---------- */
+.metrics{padding-block:8px 8px}
+.metrics .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);overflow:hidden}
+.metric{padding:20px 20px 18px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.metric + .metric{border-left:1px solid var(--line)}
+.metric .v{font-family:var(--f-display);font-weight:700;font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.03em;color:var(--hi);
+  font-variant-numeric:tabular-nums;line-height:1.1}
+.metric .k{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--fg)}
+.metric .s{font-size:var(--t-sm);color:var(--muted)}
+@media (max-width:760px){
+  .metrics .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .metric:nth-child(3){border-left:none}
+  .metric:nth-child(n+3){border-top:1px solid var(--line)}
+}
+
+/* ---------- sections ---------- */
+section.block{padding-block:clamp(56px,9vw,104px) 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,40px)}
+.sec-head h2{font-size:var(--t-xl);font-weight:700;letter-spacing:-.035em}
+.sec-head p{color:var(--muted);max-width:46ch;font-size:var(--t-sm)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+.portrait{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;aspect-ratio:1/1;max-width:100%}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.bbox{position:absolute;left:24%;top:9%;width:52%;height:62%;pointer-events:none}
+.bbox i{position:absolute;width:18px;height:18px;border:2px solid var(--accent)}
+.bbox i:nth-child(1){left:0;top:0;border-right:none;border-bottom:none}
+.bbox i:nth-child(2){right:0;top:0;border-left:none;border-bottom:none}
+.bbox i:nth-child(3){left:0;bottom:0;border-right:none;border-top:none}
+.bbox i:nth-child(4){right:0;bottom:0;border-left:none;border-top:none}
+.bbox span{position:absolute;left:-2px;top:-24px;font-family:var(--f-mono);font-size:10.5px;padding:3px 7px;border-radius:5px;
+  background:var(--accent);color:var(--accent-ink);white-space:nowrap}
+.portrait-cap{margin-top:10px;font-family:var(--f-mono);font-size:var(--t-xs);color:var(--muted)}
+.about-text{display:flex;flex-direction:column;gap:18px;max-width:62ch;min-width:0}
+.about-text p{font-size:var(--t-md);line-height:1.6;color:var(--muted)}
+.about-text p:first-child{color:var(--fg);font-family:var(--f-display);font-size:clamp(1.35rem,2.3vw,1.75rem);line-height:1.3;letter-spacing:-.015em;font-weight:500}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{font-family:var(--f-mono);font-size:var(--t-xs);padding:5px 10px;border-radius:7px;background:var(--surface-2);color:var(--fg);border:1px solid var(--line)}
+@media (max-width:760px){.about{grid-template-columns:minmax(0,1fr)}.portrait{max-width:280px}}
+
+/* experience */
+.timeline{display:flex;flex-direction:column}
+.job{display:grid;grid-template-columns:180px minmax(0,1fr);gap:clamp(16px,4vw,48px);padding-block:28px;border-top:1px solid var(--line)}
+.job:last-child{border-bottom:1px solid var(--line)}
+.job .when{font-family:var(--f-mono);font-size:var(--t-sm);color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.job .when .place{color:var(--fg)}
+.job h3{font-size:var(--t-lg);font-weight:700;letter-spacing:-.02em}
+.job .role{font-family:var(--f-mono);font-size:var(--t-sm);color:var(--accent);margin-top:8px}
+.job .proj{color:var(--muted);margin-top:6px;font-size:var(--t-sm)}
+.job ul{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;max-width:70ch}
+.job li{position:relative;padding-left:22px;color:var(--muted)}
+.job li::before{content:"";position:absolute;left:2px;top:.68em;width:9px;height:1.5px;background:var(--accent)}
+.job li strong{color:var(--fg);font-weight:600}
+@media (max-width:700px){.job{grid-template-columns:minmax(0,1fr);gap:10px}.job .when{flex-direction:row;flex-wrap:wrap;gap:4px 14px}}
+
+/* featured projects */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.proj{position:relative;display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:var(--radius);background:var(--surface);
+  border:1px solid var(--line);transition:border-color .25s, transform .25s ease-out;transform-style:preserve-3d;min-width:0;scroll-margin-top:90px}
+.proj:hover{border-color:color-mix(in srgb,var(--c) 70%,var(--line))}
+.proj.flash{border-color:var(--c)}
+.proj-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.proj-dom{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.proj-cadre{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--muted)}
+.proj h3{font-size:clamp(1.35rem,2.2vw,1.6rem);font-weight:700;letter-spacing:-.025em;line-height:1.15}
+.proj p{color:var(--muted);font-size:.97rem}
+.fig{display:flex;align-items:baseline;gap:10px;padding-block:12px;border-block:1px dashed var(--line)}
+.fig .v{font-family:var(--f-display);font-weight:700;font-size:1.9rem;letter-spacing:-.03em;color:var(--c);font-variant-numeric:tabular-nums;line-height:1}
+.fig .k{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--muted)}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.stack span{font-family:var(--f-mono);font-size:11px;padding:4px 8px;border-radius:6px;background:var(--surface-2);color:var(--fg)}
+.proj .gh{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:var(--t-xs);color:var(--muted);text-decoration:none;align-self:flex-start}
+.proj .gh:hover{color:var(--fg)}
+.proj .gh svg{width:14px;height:14px}
+@media (max-width:760px){.projects{grid-template-columns:minmax(0,1fr)}}
+
+/* archive */
+.archive-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:clamp(48px,7vw,72px) 0 16px}
+.archive-head h3{font-size:var(--t-lg);font-weight:700;letter-spacing:-.02em}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font-family:var(--f-mono);font-size:var(--t-xs);padding:7px 11px;border-radius:999px;border:1px solid var(--line);
+  background:transparent;color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.filters button sup{font-size:9px;margin-left:3px;opacity:.75}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:minmax(0,1.5fr) 130px minmax(0,1.6fr);gap:16px;padding:15px 4px;border-bottom:1px solid var(--line);align-items:baseline}
+.row .n{font-weight:600;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.row .n a{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.row .n a:hover{color:var(--fg)}
+.row .c{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--muted)}
+.row .d{font-size:var(--t-sm);color:var(--muted)}
+@media (max-width:700px){.row{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* skills + education */
+.two{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(32px,6vw,72px)}
+.skills{display:flex;flex-direction:column}
+.skill{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding-block:14px;border-top:1px solid var(--line)}
+.skill h4{margin:0;font-family:var(--f-mono);font-size:var(--t-xs);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.skill p{font-size:.97rem}
+.edu{display:flex;flex-direction:column}
+.edu li{list-style:none;display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px;padding-block:14px;border-top:1px solid var(--line)}
+.edu ul{margin:0;padding:0}
+.edu .y{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.edu strong{display:block;font-weight:600;line-height:1.35}
+.edu span{font-size:var(--t-sm);color:var(--muted)}
+.two h3{font-size:var(--t-lg);font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+@media (max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.skill{grid-template-columns:minmax(0,1fr);gap:6px}}
+
+/* contact */
+.contact{margin-top:clamp(56px,9vw,104px);padding-block:clamp(40px,7vw,72px);border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(2.2rem,6.4vw,4.6rem);font-weight:800;letter-spacing:-.045em;line-height:.98;max-width:14ch}
+.contact h2 em{font-style:normal;color:var(--accent)}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;align-items:center}
+.mail{display:flex;align-items:center;gap:6px;padding:6px 6px 6px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surface);min-width:0;max-width:100%}
+.mail code{font-family:var(--f-mono);font-size:var(--t-sm);user-select:all;overflow-wrap:anywhere}
+.mail .btn{padding:9px 13px}
+footer{padding-block:28px 40px;color:var(--muted);font-family:var(--f-mono);font-size:var(--t-xs);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line)}
+
+/* entrance */
+.reveal{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.reveal.d1{animation-delay:.08s}.reveal.d2{animation-delay:.16s}.reveal.d3{animation-delay:.24s}.reveal.d4{animation-delay:.32s}
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+@media (prefers-reduced-motion: reduce){.reveal{animation:none}}
+</style>
+</head>
+<body>
+
+
+<nav class="nav" aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>ys</i>Youssef Sarraf</a>
+    <ul>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#experience">Expérience</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Changer de thème">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="eyebrow reveal">Master d'Excellence en IA · FSBM, Casablanca</span>
+      <h1 class="reveal d1"><span>Youssef</span><span class="ghost">Sarraf</span></h1>
+      <p class="lede reveal d2">Je construis des systèmes de <strong>machine learning de bout en bout</strong> : collecte et nettoyage des données, entraînement et comparaison des modèles, mise en production.</p>
+      <span class="status reveal d3"><span class="pulse"></span>Disponible pour un stage PFE dès février 2027</span>
+      <div class="ctas reveal d4">
+        <a class="btn primary" href="#projets">Voir les projets
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        <a class="btn" href="#contact">Me contacter</a>
+      </div>
+    </div>
+    <div class="latent" id="latent" aria-label="Visualisation 3D interactive : chaque nuage de points représente un domaine de mes projets">
+      <canvas></canvas>
+      <div class="labels" id="labels"></div>
+      <div class="latent-cap"><span>espace latent · 6 clusters · 2 760 points</span><span>glisser pour faire tourner</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="metrics" aria-label="Résultats chiffrés">
+  <div class="wrap">
+    <div class="grid">
+      <div class="metric"><span class="v">0,84</span><span class="k">PR-AUC</span><span class="s">Détection de fraude bancaire</span></div>
+      <div class="metric"><span class="v">93,17 %</span><span class="k">accuracy</span><span class="s">Similarité visuelle, PFE Licence</span></div>
+      <div class="metric"><span class="v">0,83</span><span class="k">R²</span><span class="s">Prix des voitures d'occasion</span></div>
+      <div class="metric"><span class="v">100→0 %</span><span class="k">taux de doublons</span><span class="s">Pipelines en production, Cegedim</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="apropos">
+  <div class="wrap about">
+    <div>
+      <figure class="portrait" style="margin:0">
+        <img src="photo.jpg" alt="Portrait de Youssef Sarraf" width="640" height="640">
+        <div class="bbox" aria-hidden="true"><i></i><i></i><i></i><i></i><span>youssef_sarraf · 0.93</span></div>
+      </figure>
+      <p class="portrait-cap">Casablanca · Français, anglais, arabe</p>
+    </div>
+    <div class="about-text">
+      <p>Étudiant en Master d'Excellence en Intelligence Artificielle à la Faculté des Sciences Ben M'Sick, je m'intéresse à toute la chaîne qui mène un modèle jusqu'à la production.</p>
+      <p>Récupérer des données souvent imparfaites, comparer les modèles sur des métriques adaptées au problème, puis les déployer et vérifier qu'ils tiennent dans le temps. Chez Cegedim, j'ai mis en production des pipelines de données sur le SIEM de l'entreprise. À l'université, mes projets vont de la vision par ordinateur au MLOps.</p>
+      <p>Je cherche un stage PFE en Data Science, Machine Learning ou IA, sur un sujet qui doit tourner en conditions réelles.</p>
+      <div class="facts">
+        <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Scikit-learn</span><span class="chip">MLflow</span>
+        <span class="chip">Kafka</span><span class="chip">FastAPI</span><span class="chip">Docker</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Expérience</h2>
+      <p>Trois stages, du prototypage d'interface à la mise en production de pipelines de données.</p>
+    </div>
+    <div class="timeline">
+      <article class="job">
+        <div class="when"><span>Juil. – Sept. 2026</span><span class="place">Rabat</span></div>
+        <div>
+          <h3>Cegedim Outsourcing Maroc</h3>
+          <p class="role">Stagiaire Ingénieur Data &amp; Automatisation (SOAR) · Pôle SecOps</p>
+          <ul>
+            <li><strong>Conçu et industrialisé 2 pipelines de données</strong> déployés en production sur la plateforme d'orchestration de l'entreprise : ingestion via API REST, enrichissement et création de dossiers, exécutés automatiquement toutes les 15 minutes.</li>
+            <li><strong>Garanti la qualité des données</strong> : 80 % des enregistrements non pertinents filtrés en amont et taux de duplication ramené de 100 % à 0 % grâce à une table de déduplication.</li>
+            <li><strong>Automatisé le traitement de niveau 1 de bout en bout</strong> : enrichissement par 2 sources de threat intelligence, routage selon la criticité et le score de confiance de l'IA de détection, notification de l'équipe.</li>
+            <li><strong>Conçu un 3ᵉ pipeline</strong> pour les signalements de phishing, avec une méthode d'ingestion validée sur la messagerie interne.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div class="when"><span>Avr. – Mai 2025</span><span class="place">Casablanca</span></div>
+        <div>
+          <h3>CIH Bank</h3>
+          <p class="role">Stage de fin d'études</p>
+          <p class="proj">Projet : agent intelligent pour l'extraction de données immobilières publiques.</p>
+          <ul>
+            <li>Conception et développement d'un agent intelligent pour collecter, structurer et analyser automatiquement des données immobilières.</li>
+            <li>Contribution à la modélisation des processus et à l'intégration des données dans une base centralisée pour faciliter leur exploitation.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div class="when"><span>Juil. – Août 2024</span><span class="place">Casablanca</span></div>
+        <div>
+          <h3>Bourse de Casablanca</h3>
+          <p class="role">Stagiaire Concepteur Web</p>
+          <ul>
+            <li>Conception fonctionnelle et prototypage d'une plateforme web de récupération et de visualisation sécurisées de données financières.</li>
+            <li>Analyse des besoins utilisateurs, modélisation UML et design de l'expérience utilisateur.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projets">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Projets</h2>
+      <p>Les six nuages de l'espace latent, en détail. Cliquez sur un nuage en haut de page pour arriver directement sur son projet.</p>
+    </div>
+    <div class="projects">
+      <article class="proj" id="p-fraud" style="--c:var(--c3)">
+        <div class="proj-top"><span class="proj-dom"><span class="dot"></span>MLOps</span><span class="proj-cadre">Master · équipe de 9</span></div>
+        <h3>Détection de fraude bancaire</h3>
+        <p>Plateforme MLOps complète sur 284 807 transactions. Rôle de ML Engineer : découpage stratifié, entraînement suivi dans MLflow et pondération des classes plutôt que SMOTE. Le Random Forest détecte 80 fraudes sur 98 dans le jeu de test.</p>
+        <div class="fig"><span class="v">0,84</span><span class="k">PR-AUC · +17 % face à la baseline</span></div>
+        <div class="stack"><span>Scikit-learn</span><span>MLflow</span><span>dbt</span><span>Dagster</span><span>FastAPI</span><span>Docker</span><span>GitHub Actions</span></div>
+        <a class="gh" href="https://github.com/kappa20/fraud-detection-mlops" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>kappa20/fraud-detection-mlops</a>
+      </article>
+
+      <article class="proj" id="p-sim" style="--c:var(--c1)">
+        <div class="proj-top"><span class="proj-dom"><span class="dot"></span>Vision</span><span class="proj-cadre">PFE Licence · 2025</span></div>
+        <h3>Similarité visuelle de vêtements</h3>
+        <p>Recherche d'images par similarité sur 1 067 paires annotées. Quatre architectures comparées : réseau siamois ResNet-18, ViT, CLIP et YOLO, avec augmentation de données et Focal Loss.</p>
+        <div class="fig"><span class="v">93,17 %</span><span class="k">accuracy · siamois, contre 81,99 % pour ViT</span></div>
+        <div class="stack"><span>PyTorch</span><span>ResNet-18</span><span>ViT</span><span>CLIP</span><span>Hugging Face</span><span>OpenCV</span></div>
+      </article>
+
+      <article class="proj" id="p-cars" style="--c:var(--c2)">
+        <div class="proj-top"><span class="proj-dom"><span class="dot"></span>ML tabulaire</span><span class="proj-cadre">PFM Licence · 2025</span></div>
+        <h3>Prix des voitures d'occasion au Maroc</h3>
+        <p>Pipeline complet : scraping de 301 pages d'annonces, nettoyage, EDA et encodage, puis comparaison de cinq régresseurs avec GridSearchCV. Le modèle retenu est servi par une API Flask et une interface Streamlit.</p>
+        <div class="fig"><span class="v">0,83</span><span class="k">R² · Random Forest optimisé</span></div>
+        <div class="stack"><span>Playwright</span><span>BeautifulSoup</span><span>Pandas</span><span>Scikit-learn</span><span>Flask</span><span>Streamlit</span></div>
+      </article>
+
+      <article class="proj" id="p-stream" style="--c:var(--c4)">
+        <div class="proj-top"><span class="proj-dom"><span class="dot"></span>Data streaming</span><span class="proj-cadre">Master</span></div>
+        <h3>Pipeline Big Data temps réel</h3>
+        <p>Architecture distribuée d'ingestion et d'analyse NLP de flux Twitter : producteurs et consommateurs Kafka, traitement en flux avec PyFlink, stockage hybride HDFS et Elasticsearch, tendances dans Kibana.</p>
+        <div class="fig"><span class="v">Kafka → Kibana</span><span class="k">de l'ingestion au tableau de bord</span></div>
+        <div class="stack"><span>Kafka</span><span>PyFlink</span><span>NLTK</span><span>HDFS</span><span>Elasticsearch</span><span>Kibana</span></div>
+      </article>
+
+      <article class="proj" id="p-fed" style="--c:var(--c5)">
+        <div class="proj-top"><span class="proj-dom"><span class="dot"></span>Santé</span><span class="proj-cadre">Master</span></div>
+        <h3>Apprentissage fédéré pour la santé</h3>
+        <p>Prédiction des maladies cardiaques entre plusieurs hôpitaux sans jamais centraliser les données patients. Comparaison de quatre stratégies d'agrégation des poids.</p>
+        <div class="fig"><span class="v">8</span><span class="k">hôpitaux simulés · 4 stratégies d'agrégation</span></div>
+        <div class="stack"><span>PyTorch</span><span>Federated Learning</span><span>NumPy</span></div>
+      </article>
+
+      <article class="proj" id="p-ids" style="--c:var(--c6)">
+        <div class="proj-top"><span class="proj-dom"><span class="dot"></span>Sécurité</span><span class="proj-cadre">PFM Master · 2026</span></div>
+        <h3>Détection d'intrusions réseau</h3>
+        <p>Classification du trafic réseau avec un pipeline anti-fuite (SMOTE dans la validation croisée stratifiée), puis inférence en temps réel derrière une API.</p>
+        <div class="fig"><span class="v">NSL-KDD</span><span class="k">XGBoost et Random Forest</span></div>
+        <div class="stack"><span>XGBoost</span><span>Scikit-learn</span><span>FastAPI</span><span>Nginx</span><span>Docker</span></div>
+      </article>
+    </div>
+
+    <div class="archive-head">
+      <h3>Autres projets</h3>
+      <div class="filters" id="filters" role="group" aria-label="Filtrer les projets">
+        <button type="button" data-f="all" aria-pressed="true">Tous<sup>12</sup></button>
+        <button type="button" data-f="ml" aria-pressed="false">IA &amp; ML<sup>5</sup></button>
+        <button type="button" data-f="data" aria-pressed="false">Data &amp; calcul<sup>3</sup></button>
+        <button type="button" data-f="web" aria-pressed="false">Cloud, web &amp; sécurité<sup>4</sup></button>
+      </div>
+    </div>
+    <div class="rows" id="rows">
+      <div class="row" data-cat="ml"><span class="n">Classification d'images de bâtiments</span><span class="c">PFM Licence</span><span class="d">Transfer learning MobileNetV2, TensorFlow/Keras, Streamlit</span></div>
+      <div class="row" data-cat="ml"><span class="n">Classification de variants du gène CFTR <a href="https://github.com/Youssef-srf/CFTR-variant-classifier" target="_blank" rel="noopener">github ↗</a></span><span class="c">Master</span><span class="d">Alignement de séquences, Random Forest, SMOTE, Streamlit</span></div>
+      <div class="row" data-cat="ml"><span class="n">Prédicteur de salaire <a href="https://github.com/Youssef-srf/Salary-predictor" target="_blank" rel="noopener">github ↗</a></span><span class="c">PFM Master</span><span class="d">Python pour la science des données, régression</span></div>
+      <div class="row" data-cat="ml"><span class="n">Recommandation de films</span><span class="c">Master</span><span class="d">Filtrage collaboratif item-item, similarité cosinus en produits matriciels</span></div>
+      <div class="row" data-cat="ml"><span class="n">Prédicteur de réussite académique <a href="https://github.com/Youssef-srf/Recommandation-Academique-IA" target="_blank" rel="noopener">github ↗</a></span><span class="c">Projet Scrum</span><span class="d">Random Forest, Streamlit, backlog JIRA</span></div>
+      <div class="row" data-cat="data"><span class="n">Pipeline CDC temps réel</span><span class="c">Master</span><span class="d">MongoDB → Debezium → Kafka → Elasticsearch</span></div>
+      <div class="row" data-cat="data"><span class="n">Benchmark de multiplication matricielle GPU</span><span class="c">Master</span><span class="d">NumPy contre CuPy sur Tesla T4</span></div>
+      <div class="row" data-cat="data"><span class="n">Tableau de bord interactif</span><span class="c">Licence</span><span class="d">Power BI, DAX, KPIs</span></div>
+      <div class="row" data-cat="web"><span class="n">Infrastructure Cloud &amp; DevOps</span><span class="c">Master</span><span class="d">Terraform, Ansible, Kubernetes, CI/CD GitLab</span></div>
+      <div class="row" data-cat="web"><span class="n">Sécurité des données &amp; blockchain</span><span class="c">Master</span><span class="d">RSA, AES, smart contracts Solidity, Truffle</span></div>
+      <div class="row" data-cat="web"><span class="n">BlockRH <a href="https://github.com/Youssef-srf/BlockRH" target="_blank" rel="noopener">github ↗</a></span><span class="c">DApp</span><span class="d">Gestion RH décentralisée, contrôle d'accès par rôles, Solidity</span></div>
+      <div class="row" data-cat="web"><span class="n">Suivi-Derma <a href="https://github.com/Youssef-srf/Suivi-derma" target="_blank" rel="noopener">github ↗</a></span><span class="c">Personnel</span><span class="d">Application web progressive, Firebase, hors ligne d'abord</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="parcours">
+  <div class="wrap two">
+    <div>
+      <h3>Compétences</h3>
+      <div class="skills">
+        <div class="skill"><h4>Machine learning</h4><p>Scikit-learn, XGBoost, Random Forest, Pandas, NumPy, MLflow</p></div>
+        <div class="skill"><h4>Deep learning</h4><p>PyTorch, TensorFlow/Keras, Hugging Face, OpenCV, réseaux siamois, transfer learning</p></div>
+        <div class="skill"><h4>Data engineering</h4><p>Kafka, PyFlink, Spark, HDFS, Elasticsearch, Kibana, Debezium, SQL, MongoDB, scraping</p></div>
+        <div class="skill"><h4>Déploiement</h4><p>FastAPI, Flask, Streamlit, Docker, Kubernetes, CI/CD, Terraform, Linux, Git</p></div>
+        <div class="skill"><h4>Langues</h4><p>Français et anglais courants, arabe langue maternelle</p></div>
+      </div>
+    </div>
+    <div class="edu">
+      <h3>Formation</h3>
+      <ul>
+        <li><span class="y">2025–2027</span><div><strong>Master d'Excellence en Intelligence Artificielle</strong><span>FSBM, Université Hassan II, Casablanca</span></div></li>
+        <li><span class="y">2024–2025</span><div><strong>Licence d'Excellence en Intelligence Artificielle</strong><span>FSBM, Casablanca</span></div></li>
+        <li><span class="y">2023–2024</span><div><strong>Cycle Ingénierie Logicielle (ILISI)</strong><span>FST, Mohammedia</span></div></li>
+        <li><span class="y">2021–2023</span><div><strong>DEUG Sciences Mathématiques et Informatique</strong><span>FSBM, Casablanca</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap contact" id="contact">
+  <span class="eyebrow">Contact</span>
+  <h2 style="margin-top:14px">Un sujet de PFE en <em>data ou en IA</em>&nbsp;?</h2>
+  <div class="contact-row">
+    <div class="mail"><code id="mailTxt">youssefsarraf38@gmail.com</code><button class="btn" id="copyBtn" type="button">Copier</button></div>
+    <a class="btn" href="https://www.linkedin.com/in/youssef-sarraf/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="btn" href="https://github.com/Youssef-srf" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</section>
+
+<div class="wrap"><footer><span>© 2026 Youssef Sarraf</span><span>Casablanca, Maroc</span></footer></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try { var saved = localStorage.getItem('ys-theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  function isDark(){ return getComputedStyle(root).getPropertyValue('--scene').trim() !== 'light'; }
+
+  /* ---------- theme toggle ---------- */
+  var latentApi = null;
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('ys-theme', next); } catch(e){}
+    if (latentApi) latentApi.applyTheme();
+  });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){ if (latentApi) latentApi.applyTheme(); });
+  new MutationObserver(function(){ if (latentApi) latentApi.applyTheme(); }).observe(root, {attributes:true, attributeFilter:['data-theme']});
+
+  /* ---------- copy email ---------- */
+  var copyBtn = document.getElementById('copyBtn'), mailTxt = document.getElementById('mailTxt');
+  copyBtn.addEventListener('click', function(){
+    var t = mailTxt.textContent.trim();
+    function selectIt(){ var r = document.createRange(); r.selectNodeContents(mailTxt); var s = getSelection(); s.removeAllRanges(); s.addRange(r); copyBtn.textContent = 'Sélectionné'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(function(){ copyBtn.textContent = 'Copié'; }, selectIt);
+    } else selectIt();
+    setTimeout(function(){ copyBtn.textContent = 'Copier'; }, 2200);
+  });
+
+  /* ---------- archive filters ---------- */
+  var fbtns = document.querySelectorAll('#filters button'), rows = document.querySelectorAll('#rows .row');
+  fbtns.forEach(function(b){ b.addEventListener('click', function(){
+    var f = b.dataset.f;
+    fbtns.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    rows.forEach(function(r){ r.hidden = !(f === 'all' || r.dataset.cat === f); });
+  }); });
+
+  /* ---------- card tilt ---------- */
+  if (!reduce && window.matchMedia('(pointer:fine)').matches) {
+    document.querySelectorAll('.proj').forEach(function(card){
+      card.addEventListener('pointermove', function(e){
+        var r = card.getBoundingClientRect(), x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+        card.style.transform = 'perspective(900px) rotateX(' + (-y*4).toFixed(2) + 'deg) rotateY(' + (x*5).toFixed(2) + 'deg) translateY(-2px)';
+      });
+      card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+    });
+  }
+
+  /* ---------- 3D latent space ---------- */
+  var wrap = document.getElementById('latent');
+  var CLUSTERS = [
+    {name:'MLOps',          proj:'Fraude bancaire',      id:'p-fraud',  v:'--c3'},
+    {name:'Vision',         proj:'Similarité visuelle',  id:'p-sim',    v:'--c1'},
+    {name:'ML tabulaire',   proj:'Prix des voitures',    id:'p-cars',   v:'--c2'},
+    {name:'Streaming',      proj:'Big Data temps réel',  id:'p-stream', v:'--c4'},
+    {name:'Santé',          proj:'Apprentissage fédéré', id:'p-fed',    v:'--c5'},
+    {name:'Sécurité',       proj:'Intrusions réseau',    id:'p-ids',    v:'--c6'}
+  ];
+
+  function init(){
+    if (!window.THREE) { wrap.classList.add('fallback'); return null; }
+    var canvas = wrap.querySelector('canvas'), renderer;
+    try { renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:true}); }
+    catch(e){ wrap.classList.add('fallback'); return null; }
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    renderer.setPixelRatio(dpr);
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+    camera.position.set(0, 0.35, 8.6);
+    var group = new THREE.Group(); scene.add(group);
+
+    var seed = 93170517;
+    function rnd(){ seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+    function gauss(){ var u = 0; while (!u) u = rnd(); return Math.sqrt(-2*Math.log(u)) * Math.cos(2*Math.PI*rnd()); }
+
+    var PER = 360, AMB = 600, K = CLUSTERS.length, N = PER*K + AMB;
+    var pos = new Float32Array(N*3), col = new Float32Array(N*3), size = new Float32Array(N), cl = new Float32Array(N), ph = new Float32Array(N);
+    var centers = [];
+    var C0 = [[-2.7,0.55,0.9],[2.6,1.25,-0.4],[0.5,-1.45,1.9],[-1.5,-1.15,-1.9],[2.1,-0.95,1.5],[-0.3,1.75,-2.2]];
+    for (var c = 0; c < K; c++) centers.push(new THREE.Vector3(C0[c][0], C0[c][1], C0[c][2]));
+    var i = 0;
+    for (c = 0; c < K; c++) {
+      var sx = .3 + rnd()*.24, sy = .26 + rnd()*.22, sz = .3 + rnd()*.24, ctr = centers[c];
+      for (var j = 0; j < PER; j++, i++) {
+        var x, y, z;
+        if (j % 5 === 0) { /* sub-blob for a t-SNE-like texture */
+          x = ctr.x + gauss()*sx*.45 + (rnd()-.5)*.9; y = ctr.y + gauss()*sy*.45 + (rnd()-.5)*.6; z = ctr.z + gauss()*sz*.45 + (rnd()-.5)*.9;
+        } else { x = ctr.x + gauss()*sx; y = ctr.y + gauss()*sy; z = ctr.z + gauss()*sz; }
+        pos[i*3] = x; pos[i*3+1] = y; pos[i*3+2] = z;
+        size[i] = 1.3 + rnd()*2.2 + (rnd() < .04 ? 3 : 0); cl[i] = c; ph[i] = rnd()*6.283;
+      }
+    }
+    for (var k = 0; k < AMB; k++, i++) {
+      var r = 2.2 + rnd()*3.2, t = rnd()*6.283, p = Math.acos(2*rnd()-1);
+      pos[i*3] = r*Math.sin(p)*Math.cos(t); pos[i*3+1] = r*Math.cos(p)*.7; pos[i*3+2] = r*Math.sin(p)*Math.sin(t);
+      size[i] = .8 + rnd()*1.2; cl[i] = -1; ph[i] = rnd()*6.283;
+    }
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    geo.setAttribute('aSize', new THREE.BufferAttribute(size, 1));
+    geo.setAttribute('aCluster', new THREE.BufferAttribute(cl, 1));
+    geo.setAttribute('aPhase', new THREE.BufferAttribute(ph, 1));
+
+    var uniforms = { uTime:{value:0}, uHover:{value:-1}, uPR:{value:dpr}, uLight:{value:0}, uScale:{value:1} };
+    var mat = new THREE.ShaderMaterial({
+      uniforms: uniforms, transparent:true, depthWrite:false, vertexColors:true, blending:THREE.AdditiveBlending,
+      vertexShader: [
+        'attribute float aSize; attribute float aCluster; attribute float aPhase;',
+        'uniform float uTime; uniform float uHover; uniform float uPR; uniform float uScale;',
+        'varying vec3 vC; varying float vA;',
+        'void main(){',
+        '  vec3 p = position + 0.045*vec3(sin(uTime*.6+aPhase), cos(uTime*.5+aPhase*1.3), sin(uTime*.45+aPhase*.7));',
+        '  float on = (uHover > -0.5 && abs(aCluster-uHover) < 0.5) ? 1.0 : 0.0;',
+        '  vec4 mv = modelViewMatrix * vec4(p,1.0);',
+        '  gl_PointSize = aSize * (1.0 + on*0.9) * uPR * uScale * (24.0 / -mv.z);',
+        '  float base = aCluster < -0.5 ? 0.35 : 0.9;',
+        '  vA = uHover > -0.5 ? mix(base*0.28, 1.0, on) : base;',
+        '  vC = color; gl_Position = projectionMatrix * mv;',
+        '}'].join('\n'),
+      fragmentShader: [
+        'uniform float uLight; varying vec3 vC; varying float vA;',
+        'void main(){',
+        '  float d = length(gl_PointCoord - 0.5);',
+        '  float a = smoothstep(0.5, 0.0, d);',
+        '  a = mix(a, smoothstep(0.5, 0.32, d), uLight);',
+        '  gl_FragColor = vec4(vC, a * vA);',
+        '}'].join('\n')
+    });
+    group.add(new THREE.Points(geo, mat));
+
+    /* edges: nearest neighbours inside each cluster + a ring between centroids */
+    var seg = [], segCol = [];
+    for (c = 0; c < K; c++) {
+      var base = c*PER, M = 70;
+      for (var a1 = 0; a1 < M; a1++) {
+        var best = [[1e9,-1],[1e9,-1]];
+        for (var b1 = 0; b1 < M; b1++) { if (a1 === b1) continue;
+          var ia = (base+a1)*3, ib = (base+b1)*3;
+          var dd = (pos[ia]-pos[ib])*(pos[ia]-pos[ib]) + (pos[ia+1]-pos[ib+1])*(pos[ia+1]-pos[ib+1]) + (pos[ia+2]-pos[ib+2])*(pos[ia+2]-pos[ib+2]);
+          if (dd < best[0][0]) { best[1] = best[0]; best[0] = [dd,b1]; } else if (dd < best[1][0]) best[1] = [dd,b1];
+        }
+        for (var q = 0; q < 2; q++) { if (best[q][1] < 0 || best[q][1] < a1) continue;
+          var A = (base+a1)*3, B = (base+best[q][1])*3;
+          seg.push(pos[A],pos[A+1],pos[A+2],pos[B],pos[B+1],pos[B+2]); segCol.push(c,c);
+        }
+      }
+    }
+    for (c = 0; c < K; c++) { var n1 = centers[c], n2 = centers[(c+1)%K]; seg.push(n1.x,n1.y,n1.z,n2.x,n2.y,n2.z); segCol.push(-1,-1); }
+    var lgeo = new THREE.BufferGeometry();
+    lgeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(seg), 3));
+    var lcol = new Float32Array(segCol.length*3);
+    lgeo.setAttribute('color', new THREE.BufferAttribute(lcol, 3));
+    var lmat = new THREE.LineBasicMaterial({vertexColors:true, transparent:true, opacity:.22, blending:THREE.AdditiveBlending, depthWrite:false});
+    group.add(new THREE.LineSegments(lgeo, lmat));
+
+    /* HTML labels */
+    var labelsEl = document.getElementById('labels'), labels = [];
+    CLUSTERS.forEach(function(cfg, idx){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'lbl'; b.style.setProperty('--c', 'var(' + cfg.v + ')');
+      b.innerHTML = '<span class="dot"></span>' + cfg.name + ' <b>· ' + cfg.proj + '</b>';
+      b.setAttribute('aria-label', cfg.name + ' : voir le projet ' + cfg.proj);
+      b.addEventListener('mouseenter', function(){ uniforms.uHover.value = idx; if (reduce) draw(); });
+      b.addEventListener('focus', function(){ uniforms.uHover.value = idx; });
+      b.addEventListener('mouseleave', function(){ uniforms.uHover.value = -1; if (reduce) draw(); });
+      b.addEventListener('blur', function(){ uniforms.uHover.value = -1; });
+      b.addEventListener('click', function(){
+        var el = document.getElementById(cfg.id); if (!el) return;
+        el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+        el.classList.add('flash'); setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+      });
+      labelsEl.appendChild(b); labels.push(b);
+    });
+
+    function applyTheme(){
+      var cs = getComputedStyle(root), light = cs.getPropertyValue('--scene').trim() === 'light';
+      var pal = CLUSTERS.map(function(cfg){ return new THREE.Color(cs.getPropertyValue(cfg.v).trim()); });
+      var amb = new THREE.Color(cs.getPropertyValue('--c0').trim());
+      for (var n = 0; n < N; n++) { var cc = cl[n] < 0 ? amb : pal[cl[n]]; col[n*3] = cc.r; col[n*3+1] = cc.g; col[n*3+2] = cc.b; }
+      geo.attributes.color.needsUpdate = true;
+      for (var s = 0; s < segCol.length; s++) { var c2 = segCol[s] < 0 ? amb : pal[segCol[s]]; lcol[s*3] = c2.r; lcol[s*3+1] = c2.g; lcol[s*3+2] = c2.b; }
+      lgeo.attributes.color.needsUpdate = true;
+      mat.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending; mat.needsUpdate = true;
+      lmat.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending; lmat.opacity = light ? .28 : .22; lmat.needsUpdate = true;
+      uniforms.uLight.value = light ? 1 : 0;
+      uniforms.uScale.value = Math.max(.65, Math.min(1, wrap.clientWidth/620)) * (light ? .8 : 1);
+      draw();
+    }
+
+    /* interaction */
+    var rotY = 0.5, rotX = 0.12, velY = 0, targetX = 0.12, dragging = false, lastX = 0, lastY = 0, mx = 0, my = 0;
+    canvas.addEventListener('pointerdown', function(e){ dragging = true; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener('pointermove', function(e){
+      var r = canvas.getBoundingClientRect(); mx = (e.clientX - r.left)/r.width - .5; my = (e.clientY - r.top)/r.height - .5;
+      if (!dragging) return;
+      var dx = e.clientX - lastX, dy = e.clientY - lastY; lastX = e.clientX; lastY = e.clientY;
+      velY = dx * 0.006; rotY += velY; targetX = Math.max(-.55, Math.min(.65, targetX + dy*0.004));
+      if (reduce) draw();
+    });
+    function end(){ dragging = false; }
+    canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end);
+    canvas.addEventListener('pointerleave', function(){ mx = 0; my = 0; });
+
+    function resize(){
+      var w = wrap.clientWidth, h = wrap.clientHeight; if (!w || !h) return;
+      renderer.setSize(w, h, false); camera.aspect = w/h;
+      camera.position.z = w < 520 ? 10.4 : 9.0; uniforms.uScale.value = Math.max(.65, Math.min(1, w/620)) * (uniforms.uLight.value ? .8 : 1);
+      camera.updateProjectionMatrix(); draw();
+    }
+    var v = new THREE.Vector3();
+    function placeLabels(){
+      var w = wrap.clientWidth, h = wrap.clientHeight;
+      group.updateMatrixWorld();
+      labels.forEach(function(el, idx){
+        v.copy(centers[idx]); v.y += .62; v.applyMatrix4(group.matrixWorld);
+        var depth = v.z; v.project(camera);
+        var x = (v.x*.5+.5)*w, y = (-v.y*.5+.5)*h;
+        var ew = el.offsetWidth, eh = el.offsetHeight;
+        x = Math.max(4, Math.min(w - ew - 4, x - ew/2)); y = Math.max(4, Math.min(h - eh - 30, y - eh/2));
+        el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+        var o = Math.max(.35, Math.min(1, .7 + depth*.18));
+        el.style.opacity = o.toFixed(2); el.style.zIndex = Math.round(10 + depth*10);
+      });
+    }
+    function draw(){
+      group.rotation.y = rotY; group.rotation.x = rotX;
+      camera.position.x += (mx*0.6 - camera.position.x) * .05;
+      camera.position.y += (0.35 - my*0.4 - camera.position.y) * .05;
+      camera.lookAt(0, 0, 0);
+      renderer.render(scene, camera); placeLabels();
+    }
+
+    var visible = true, last = performance.now();
+    if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if (visible) last = performance.now(); }).observe(wrap);
+    function loop(now){
+      requestAnimationFrame(loop);
+      if (!visible || document.hidden) return;
+      var dt = Math.min(.05, (now - last)/1000); last = now;
+      uniforms.uTime.value += dt;
+      if (!dragging) { velY *= .94; rotY += velY + 0.0016; }
+      rotX += (targetX - rotX) * .06;
+      draw();
+    }
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(wrap); else window.addEventListener('resize', resize);
+    resize(); applyTheme();
+    if (!reduce) requestAnimationFrame(loop);
+    return { applyTheme: applyTheme };
+  }
+  try { latentApi = init(); } catch(e){ wrap.classList.add('fallback'); }
+})();
+</script>
+
+</body>
+</html>
